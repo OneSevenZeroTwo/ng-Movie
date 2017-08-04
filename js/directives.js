@@ -230,10 +230,16 @@
             }
         }
     }]);
+    //加载
     directives.directive('xloading', [function() {
         return {
             templateUrl: 'directive/xloading.html'
         }
     }]);
-
+    //我的页面
+	directives.directive('xmine', [function() {
+        return {
+            templateUrl: 'directive/xmine.html'
+        }
+    }]);
 })();
