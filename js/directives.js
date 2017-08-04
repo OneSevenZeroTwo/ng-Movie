@@ -33,57 +33,20 @@
             }
         }
     }]);
-    directives.directive('xbanner', ['$http',"$timeout", function($http,$timeout) {
+    directives.directive('xswiper', ['$http', function($http) {
         return {
-            templateUrl: 'directive/xbanner.html',
+            templateUrl: 'directive/xswiper.html',
             link: function(scope, ele, attr) {
-                scope.banner = [];
-                scope.tablenum = 1;
-                scope.page = 2;
-                scope.pageSize = 4;
-                scope.isShow = 0;
-                scope.showImg = function(){
-                    scope.isShow++;
-                    $timeout(function(){
-                        $http({
-                            method: 'GET',
-                            url: 'http://localhost:6789/',
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
-                            },
-                            params: {
-                                tableNum: scope.tablenum,
-                                page: scope.page,
-                                pagesize: scope.pageSize
-                            },
-                            transformRequest: function(obj) {
-                                var str = [];
-                                for (var p in obj) {
-                                    str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
-                                }
-                                return str.join("&");
-                            }
-                        }).then(function(data) {
-                            console.log(data.data.data);
-                            scope.banner = data.data.data;
-                            scope.isShow--;
-                            if(scope.isShow != 0){
-                                scope.isShow = 0;
-                            }
-                            console.log(scope.isShow);
-
-                        }, function(err) {
-                            console.log(err);
-                        });
-                    },1000)
-                }
-                scope.showImg();
-                var swiper = new Swiper('.swiper-container', {
-                    pagination: '.swiper-pagination',
-                    paginationClickable: true,
-                    observer: true, //修改swiper自己或子元素时，自动初始化swiper
-                    observeParents: true //修改swiper的父元素时，自动初始化swiper
-                });
+              
+          		scope.urls = ["./img/Frontpage/lunbo1.jpg","./img/Frontpage/lunbo2.jpg","./img/Frontpage/lunbo3.jpg","./img/Frontpage/lunbo4.jpg","./img/Frontpage/lunbo5.jpg","./img/Frontpage/lunbo6.jpg","./img/Frontpage/lunbo7.jpg"];
+              var swiper = new Swiper('.swiper-container', {
+					pagination: '.swiper-pagination',
+					paginationClickable: true,
+					observer: true, //修改swiper自己或子元素时，自动初始化swiper
+					observeParents: true,//修改swiper的父元素时，自动初始化swiper
+					autoplay: 3000,
+					autoplayDisableOnInteraction: false
+				});
             }
         }
     }]);
@@ -137,6 +100,21 @@
                     });
                 }
                 scope.showNews();
+            }
+        }
+    }]);
+		directives.directive('xhlist', ["$http",function($http) {
+        return {
+            templateUrl: 'directive/xhlist.html',
+            link:function(scope,ele,attr){
+            	var baseUrl = "https://bird.ioliu.cn/v1?url=http://m.maoyan.com";
+            	console.log(444);
+            	$http({
+            		method:"GET",
+            		url:baseUrl+"/movie/list.json?type=hot&offset=0&limit=1000"
+            	}).then(function(data){
+            		console.log(data);
+            	})
             }
         }
     }]);
