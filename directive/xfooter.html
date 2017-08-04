@@ -3,7 +3,7 @@
     </div>
     <div class="weui-tabbar">
         <a href="#!/home/movie/nowin" class="weui-tabbar__item" ng-click="changeTab(0)">
-            <span class="weui-tabbar__icon shouye" ng-class="{'active':tab==0}"></span>
+            <span class="weui-tabbar__icon movie" ng-class="{'active':tab==0}"></span>
             <p class="weui-tabbar__label"  ng-class="{'weui-bar__item_on':tab==0}">电影</p>
         </a>
         <!-- <a href="#!/home/video" class="weui-tabbar__item" ng-click="changeTab(1)">
@@ -11,7 +11,7 @@
             <p class="weui-tabbar__label"  ng-class="{'weui-bar__item_on':tab==1}">视频</p>
         </a> -->
         <a href="#!/home/cinema" class="weui-tabbar__item" ng-click="changeTab(2)">
-            <span class="weui-tabbar__icon toutiao" ng-class="{'active':tab==2}"></span>
+            <span class="weui-tabbar__icon cinema" ng-class="{'active':tab==2}"></span>
             <p class="weui-tabbar__label"  ng-class="{'weui-bar__item_on':tab==2}">影院</p>
         </a>
         <a href="#!/home/mine" class="weui-tabbar__item" ng-click="changeTab(3)">
@@ -20,7 +20,7 @@
         </a>
     </div>
 </div>
-<style>
+<style scoped>
 .weui-tab {
     position: fixed;
     bottom: 0;
@@ -36,17 +36,17 @@
     background-repeat: no-repeat;
     background-size: 27px;
 }
-.weui-tabbar__icon.shouye{
-    background-image: url(./img/home1.png); 
+.weui-tabbar__icon.movie{
+    background-image: url(./img/movie2.png); 
 }
-.weui-tabbar__icon.shipin{
-    background-image: url(./img/video1.png); 
+.weui-tabbar__icon.cinema{
+    background-image: url(./img/cinema2.png); 
 }
-.weui-tabbar__icon.toutiao{
+/*.weui-tabbar__icon.toutiao{
     background-image: url(./img/toutiao1.png); 
-}
+}*/
 .weui-tabbar__icon.wode{
-    background-image: url(./img/mine1.png); 
+    background-image: url(./img/mine2.png); 
 }
 .weui-tabbar__icon.active{
     background-position: 0px -27px; 

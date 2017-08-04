@@ -12,7 +12,7 @@
                 scope.columnArr = ['#!/home/index', '#!/home/weitoutiao/yule/2', '#!/home/weitoutiao/junshi/3', '#!/home/weitoutiao/qiche/4', '#!/home/weitoutiao/caijing/5', '#!/home/weitoutiao/xiaohua/6', '#!/home/weitoutiao/tiyu/7', '#!/home/weitoutiao/keji/8']
                 scope.tableNum = $state.params.tableNum;
                 scope.route = scope.columnArr[scope.tableNum - 1];
-                scope.title = '淘淘';
+                scope.title = '乐玩';
                 //console.log(scope.title);
             }
         }
@@ -149,12 +149,12 @@
                 scope.route = urlObj[2];
                 // 根据路由来判断每次刷新是显示在哪个column
                 scope.currentCol = function() {
-                    if (scope.route == 'index') {
+                    if (scope.route == 'movie') {
                         scope.tab = 0;
                         scope.changeTab = function(tab) {
                             scope.tab = tab;
                         }
-                    } else if (scope.route == 'weitoutiao') {
+                    } else if (scope.route == 'cinema') {
                         scope.tab = 2;
                         scope.changeTab = function(tab) {
                             scope.tab = tab;
@@ -223,7 +223,10 @@
         return {
             templateUrl: 'directive/xcolumn.html',
             link: function(scope, ele, attr) {
-                
+                scope.tabNum = 0;
+                scope.changeClick = function(num){
+                    scope.tabNum = num;
+                }
             }
         }
     }]);

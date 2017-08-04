@@ -7,10 +7,21 @@
 </head>
 <link rel="stylesheet" href="css/weui.css">
 <link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/swiper.css">
+<!-- <link rel="stylesheet" href="css/swiper.css"> -->
+<script type="text/javascript">
+      // 把尺寸放大N倍（N是window.devicePixelRatio）
+      var wd = document.documentElement.clientWidth*window.devicePixelRatio/10;
+      //物理像素*设备像素比=真实像素
+      document.getElementsByTagName("html")[0].style.fontSize = wd + "px";
+      // 把屏幕的倍率缩小到N分之一（N是window.devicePixelRatio）
+      var scale = 1/window.devicePixelRatio;
+      var mstr = 'initial-scale='+ scale +', maximum-scale='+ scale +', minimum-scale='+ scale +', user-scalable=no';
+      document.getElementById("vp").content = mstr;
+</script>
 <body>
 	<ui-view></ui-view>
 </body>
+
 <script src="lib/angular.js"></script>
 <script src="lib/angular-ui-router.js"></script>
 <script src="lib/swiper.js"></script>
@@ -20,5 +31,5 @@
 <script src="js/filters.js"></script>
 <script src="js/directives.js"></script>
 <script src="js/bootstrap.js"></script>
-<script src="js/rem.js"></script>
+
 </html>
