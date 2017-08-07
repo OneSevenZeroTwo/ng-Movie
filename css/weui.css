@@ -1489,9 +1489,8 @@ a.weui-media-box:active {
           align-items: center;
 }
 .weui-media-box_appmsg .weui-media-box__hd {
-  margin-right: .8em;
+  margin-right:0.133333rem;
   width: 60px;
-  height: 60px;
   line-height: 60px;
   text-align: center;
 }
