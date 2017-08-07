@@ -1,0 +1,41 @@
+{
+    "status": 0,
+    "msg": "OK",
+    "data": [{
+        "banner_id": "379",
+        "title": "",
+        "image": "http://apiv2.vmovier.com/Uploads/Vmovier/banner/2015/07-01/559361e8eb52b.jpg",
+        "type": "post",
+        "object_id": "46986"
+    }, {
+        "banner_id": "378",
+        "title": "喜极而泣超感人短片《Proud to love》",
+        "image": "http://apiv2.vmovier.com/Uploads/Vmovier/banner/2015/06-30/5592532356bc1.jpg",
+        "type": "post",
+        "object_id": "46974"
+    }, {
+        "banner_id": "377",
+        "title": "虐心结局法国动画短片《CARN》",
+        "image": "http://apiv2.vmovier.com/Uploads/Vmovier/banner/2015/06-29/5590aa6f64b8d.jpg",
+        "type": "post",
+        "object_id": "46948"
+    }, {
+        "banner_id": "375",
+        "title": "狱后生活感人短片《走出笼中》",
+        "image": "http://apiv2.vmovier.com/Uploads/Vmovier/banner/2015/06-26/558cec489f143.jpg",
+        "type": "post",
+        "object_id": "46928"
+    }, {
+        "banner_id": "374",
+        "title": "",
+        "image": "http://apiv2.vmovier.com/Uploads/Vmovier/banner/2015/06-26/558cfd17c57a6.jpg",
+        "type": "post",
+        "object_id": "46954"
+    }, {
+        "banner_id": "368",
+        "title": "【电影自习室】第四十三期",
+        "image": "http://apiv2.vmovier.com/Uploads/Vmovier/banner/2015/06-25/558bef28d2ab8.jpg",
+        "type": "backstage",
+        "object_id": "46958"
+    }]
+}

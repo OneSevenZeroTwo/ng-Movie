@@ -1,0 +1,48 @@
+<div class="xwillin">
+    <p class="xwillin_title">每月观影指南</p>
+    <div class="swiper-container swiper-container-horizontal swiper-container-free-mode">
+        <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
+            <div class="swiper-slide swiper-slide-next" style="width: 1.4rem; margin-right: 0.04rem;" ng-click="changeColumn(2)" ng-class="{active:tableNum == 2}" ng-repeat="m in attention">
+                <div class="container">
+                    <img src="{{m.image}}" alt="">
+                </div>
+                <p class="movie_title">{{m.title | shortTitle}}</p>
+                <p class="wanted">{{m.wantedCount}}人想看</p>
+                <p class="time">{{m.rMonth + '-' + m.rDay}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+.xwillin_title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 0.053333rem;
+    line-height: 30px;
+}
+
+.swiper-slide img {
+    text-align: center;
+    width: 100%;
+}
+
+.xwillin .container {
+    border-radius: 0.053333rem;
+    width: 100%;
+    height: 1.653333rem;
+    overflow: hidden;
+}
+
+.xwillin .movie_title,
+.xwillin .wanted,
+.xwillin .time {
+    line-height: 20px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.xwillin .wanted,
+.xwillin .time {
+    color: #ccc;
+}
+</style>

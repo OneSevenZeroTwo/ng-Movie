@@ -1,0 +1,82 @@
+<!-- <div class="weui-panel weui-panel_access">
+    <div class="weui-panel__bd" ng-repeat="m in movieList|filter:{'title':keyword}" ng-class="{toutiao:n.text_image1==''}">
+        <a href="#!/detail/{{m.id}}/{{tableNum}}" class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+                <img class="weui-media-box__thumb" ng-src="{{m.image}}" alt="">
+            </div>
+            <div class="weui-media-box__bd">
+                <h4 class="weui-media-box__title">{{m.title}}</h4>
+                <p class="weui-media-box__desc" ng-hide="n.text_image1==''">{{m.wantedCount}}人想看</p>
+            </div>
+        </a>
+    </div>
+    <div class="weui-panel__ft" ng-show="showMore" ng-click="showNews()">
+        <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+            <div class="weui-cell__bd">查看更多</div>
+            <span class="weui-cell__ft"></span>
+        </a>
+    </div>
+    <div class="weui-loadmore" ng-show="isShow">
+        <i class="weui-loading"></i>
+        <span class="weui-loadmore__tips">正在加载</span>
+    </div>
+    <div class="weui-loadmore weui-loadmore_line" ng-show="noMore">
+        <span class="weui-loadmore__tips">暂无数据</span>
+    </div>
+</div> -->
+<div class="xwillinlist">
+    <div class="xwillinlist_container" ng-repeat="m in movieList|filter:{'title':keyword}" ng-if="m.image">
+        <a href="#!/detail/{{m.id}}/">
+            <img ng-src="{{m.image}}" alt="">
+            <h4 class="xwilllist_title">{{m.title}}</h4>
+            <p class="xwillinlist_wanted">{{m.wantedCount}}人想看</p>
+            <p class="xwillinlist_director">导演:{{m.director}}</p>
+            <p class="xwillinlist_actor" ng-if="m.actor1 || m.actor2">主演:{{m.actor1}} {{m.actor2}}</p>
+        </a>
+    </div>
+    <div class="weui-loadmore" ng-show="isShow">
+        <i class="weui-loading"></i>
+        <span class="weui-loadmore__tips">正在加载</span>
+    </div>
+    <div class="weui-panel weui-panel_access" ng-show="!isShow">
+        <div class="weui-loadmore weui-loadmore_line">
+            <span class="weui-loadmore__tips">暂无数据</span>
+        </div>
+    </div>
+</div>
+<style>
+.xwillinlist {
+    margin-bottom: 0.706667rem;
+}
+
+.xwillinlist_container {
+    overflow: hidden;
+    margin-top: 0.133333rem;
+    margin-left: 0.133333rem;
+}
+
+.xwillinlist_container img {
+    width: 0.8rem;
+    float: left;
+}
+
+.xwillinlist_actor,
+.xwillinlist_director,
+.xwilllist_title,
+.xwillinlist_wanted {
+    font-size: 14px;
+    line-height: 20px;
+    margin-left: 70px;
+    color: #000;
+}
+
+.xwillinlist_wanted {
+    color: #d81e06;
+    font-size: 12px;
+}
+
+.xwillinlist_actor,
+.xwillinlist_director {
+    color: #ddd;
+}
+</style>

@@ -2,9 +2,20 @@
     margin: 0;
     padding: 0;
 }
+<<<<<<< HEAD
 
+=======
+body{
+	background-color: #fcfcfc;
+}
+>>>>>>> 4a11a07f0a82cc2ede8dce2742a03d31a56b7e6d
 ul li{
     list-style: none;
+}
+img{
+    display: block;
+    margin: 0;
+    padding:0;
 }
 
 /* .hengxiang {

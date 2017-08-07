@@ -11,4 +11,13 @@
             return (input+'000')*1;
         }
     }]);
+    filters.filter('shortTitle', [function() {
+        return function(input) {
+            if(input.length>6){
+                return input.slice(0,6)+'...'
+            }else{
+                return input
+            }
+        }
+    }]);
 })();

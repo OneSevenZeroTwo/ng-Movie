@@ -1,9 +1,10 @@
-; 
+;
 // 避免出现全局变量
 // 每个组件要写好注释为哪个组件，这里面有我之前的写的组件，没写注释的你们可以看着用，启用的话需要写明注释
 // 组件的命名中不能有大写
 (function() {
     var directives = angular.module('directives', []);
+    
     // xheader 头部组件 =============================
     directives.directive('xheader', ['$state', function($state) {
         return {
@@ -17,17 +18,18 @@
             }
         }
     }]);
+
     // xsearch 搜索组件 =============================
     directives.directive('xsearch', [function() {
         return {
             templateUrl: 'directive/xsearch.html',
-            link:function(scope,ele,attr){
+            link: function(scope, ele, attr) {
                 scope.isShowSearch = false;
-                scope.keyword='';
-                scope.changeShowSearch = function(){
+                scope.keyword = '';
+                scope.changeShowSearch = function() {
                     scope.isShowSearch = true;
                 }
-                scope.clearWord = function(){
+                scope.clearWord = function() {
                     scope.keyword = '';
                 }
             }
@@ -148,67 +150,105 @@
             }
         }
     }]);
-    directives.directive('xarticle', ['$state', '$http', function($state, $http) {
-        return {
-            templateUrl: 'directive/xarticle.html',
-            // controller:function(){
-            //     $rootScope.toXgallery=function(){
-                     
-            //     }
-            // }
-            link: function(scope, ele, attr) {
-                console.log($state);
-                scope.news_id = $state.params.id;
-                scope.channel = attr.channel;
-                scope.tableNum = $state.params.tableNum;
-                scope.news = {};
-                scope.showNewsImg = false;
-                scope.click = function(e){
-                    scope.imgUrl = e.target.src;
-                    scope.showNewsImg = true;
-                }
-                scope.changeGallery = function(){
-                    scope.showNewsImg = false;
-                }
-                $http({
-                    method: 'GET',
-                    url: 'http://localhost:6788/',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
-                    },
-                    params: {
-                        tableNum: scope.tableNum,
-                        id: scope.news_id
-                    },
-                    transformRequest: function(obj) {
-                        var str = [];
-                        for (var p in obj) {
-                            str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
-                        }
-                        return str.join("&");
-                    }
-                }).then(function(data) {
-                    console.log(data.data.data);
-                    scope.news = data.data.data;
-                }, function(err) {
-                    console.log(err);
-                });
-            }
-        }
-    }]);
+
     // xcolumn movie的栏目组件====================================
-    directives.directive('xcolumn', ['$state', function($state) {
+    directives.directive('xcolumn', [function() {
         return {
             templateUrl: 'directive/xcolumn.html',
             link: function(scope, ele, attr) {
                 scope.tabNum = 0;
-                scope.changeClick = function(num){
+                scope.changeClick = function(num) {
                     scope.tabNum = num;
                 }
             }
         }
     }]);
-    //加载
+
+    directives.directive('xloading', [function() {
+        return {
+            templateUrl: 'directive/xloading.html'
+        }
+    }]);
+
+    // xwillin willin的栏目组件====================================
+    directives.directive('xwillin', ['$state', '$http', function($state, $http) {
+        return {
+            templateUrl: 'directive/xwillin.html',
+            link: function(scope, ele, attr) {
+                scope.tabNum = 0;
+                scope.changeClick = function(num) {
+                    scope.tabNum = num;
+                }
+                scope.attention = [];
+                scope.banner = [];
+
+                // 请求attention==========
+                $http({
+                    method: 'GET',
+                    url: 'data/willin.json',
+                }).then(function(data) {
+                    scope.attention = data.data.attention;
+                    // console.log(scope.attention);
+                }, function(err) {
+                    console.log(err);
+                });
+                var swiper = new Swiper('.swiper-container', {
+                    pagination: '.swiper-pagination',
+                    slidesPerView: 4,
+                    paginationClickable: true,
+                    spaceBetween: 6,
+                    freeMode: true,
+                    observer: true, //修改swiper自己或子元素时，自动初始化swiper
+                    observeParents: true //修改swiper的父元素时，自动初始化swiper
+                });
+            }
+        }
+    }]);
+
+    // xwillinlist willin的栏目组件====================================
+    directives.directive('xwillinlist', ['$http', '$window', function($http, $window) {
+        return {
+            templateUrl: 'directive/xwillinlist.html',
+            link: function(scope, ele, attr) {
+                scope.tabNum = 0;
+                scope.page = -1;
+                scope.movieList = [];
+                scope.isShow = true;
+
+                scope.changeClick = function(num) {
+                    scope.tabNum = num;
+                    //scope.pageCount = 10;
+                }
+
+                scope.loadMore = function(){
+                    $http({
+                        method: 'GET',
+                        url: 'data/willin.json',
+                    }).then(function(data) {
+                        scope.page++;
+                        scope.movieList = scope.movieList.concat(data.data.moviecomings.splice(scope.page * 10, 10));
+
+                        //console.log(scope.movieList);
+                        if(scope.movieList.length == 58){
+                            scope.isShow = false;
+                        }
+
+                    }, function(err) {
+                        console.log(err);
+                    });  
+                }
+                scope.loadMore();
+
+                $window.onscroll = function(){
+                    var toBottom = document.body.scrollHeight - document.body.scrollTop;
+                    if (toBottom == window.screen.availHeight) {
+                        scope.loadMore();
+                    }
+                    console.log(toBottom,window.screen.availHeight );
+                }
+            }
+        }
+    }]);
     directives.directive('xloading', [function() {
         return {
             templateUrl: 'directive/xloading.html'
