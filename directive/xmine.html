@@ -1,26 +1,79 @@
-<header class="mine-header">
-	我 的
-	<i class="iconfont icon-lingdang mine-head-tubiao"></i>
-</header>
-<div class="login-rester">
-	<div class="headImg">
-		<img ng-src="img/headImg.jpg" alt="" />
+<div class="xmine-box">
+	<header class="mine-header">
+		我 的
+		<i class="iconfont icon-lingdang mine-head-tubiao"></i>
+	</header>
+	<div class="login-rester">
+		<div class="headImg">
+			<img ng-src="img/headImg.jpg" alt="" />
+		</div>
+		<a class="fast-login" href="javascript:;">立即登录</a>
 	</div>
-	<a class="fast-login" href="javascript:;">立即登录</a>
+	<div class="piaoquan">
+		<ul class="piaoquan-list">
+			<li>
+				<i class="iconfont icon-dianyingpiao"></i>
+				<a href="javascript:;">电影票</a>
+			</li>
+			<li>
+				<i class="iconfont icon-menpiao_zhanlanyanchu"></i>
+				<a href="javascript:;">演出票</a>
+			</li>
+			<li>
+				<i class="iconfont icon-youhuiquan"></i>
+				<a href="javascript:;">优惠券</a>
+			</li>
+			<li>
+				<i class="iconfont icon-yingchengqia"></i>
+				<a href="javascript:;">影城卡</a>
+			</li>
+		</ul>
+	</div>
+	<div class="my-vip">
+		我的会员
+		<span class="more-detail">&gt;</span>
+	</div>
+	<div class="my-vip" style="border-bottom: 0.01rem solid #E5E5E5;">
+		想看的电影
+		<span class="more-detail">&gt;</span>
+	</div>
+	<div class="my-vip" style="margin-top: 0;">
+		看过的电影
+		<span class="more-detail">&gt;</span>
+	</div>
+	<div class="my-vip" style="border-bottom: 0.01rem solid #E5E5E5;">
+		银行卡特惠
+		<span class="more-detail">&gt;</span>
+	</div>
+	<div class="my-vip" style="margin-top: 0;">
+		娱乐宝
+		<span class="more-detail">&gt;</span>
+	</div>
+	<div class="my-vip">
+		帮助与反馈
+		<span class="more-detail">咨询票小蜜  &gt;</span>
+	</div>
+	<div class="my-vip">
+		设置
+		<span class="more-detail">&gt;</span>
+	</div>
 </div>
 
 <style type="text/css">
+	.xmine-box{
+		background-color: #ECECEC;
+	}
 	/*头部*/
 	.mine-header {
 		height: 0.64rem;
 		line-height: 0.64rem;
-		font-size: 0.24rem;
+		font-size: 22px;
 		text-align: center;
 		background-color: #fff;
 		color: #000;
 	}
 	.mine-head-tubiao {
-		font-size: 0.24rem;
+		font-size: 22px;
 		position: absolute;
 		right: 0.15rem;
 		color: #000;
@@ -30,7 +83,7 @@
 	.login-rester{
 		background-color: #fff;
 		position: relative;
-		margin-top: 0.1rem;
+		margin-top: 0.07rem;
 		height: 1.06rem;
 		line-height: 1.06rem;
 		padding-left: 0.2rem;
@@ -53,10 +106,52 @@
 		position: absolute;
     	left: 0.9rem;
 		display: inline-block;
-		line-height: 1.06rem;
-		font-size: 0.24rem;
+		font-size: 16px;
+	}
+	/*票券*/
+	.piaoquan{
+		margin-top: 0.07rem;
+		padding-left: 0.2rem;
+		background-color: #fff;
+		height: 0.9rem;
+		font-size: 16px;
+		
+	}
+	.piaoquan-list{
+		list-style: none;
+		overflow: hidden;
+	}
+	.piaoquan-list li{
+		float: left;
+		margin: 0.04rem 0.1rem ;
+		width: 0.27rem;
+    	font-size: 16px;
+    	padding: 0 0.3rem;
+	}
+	.piaoquan-list li i{
+		text-align: center;
+		font-size: 32px;
+	}
+	.piaoquan-list li a{
+		display: inline-block;
+		width: 1.3rem;
+		color: #000;
+	}
+	/*我的会员*/
+	.my-vip{
+		padding-left: 0.2rem;
+		margin-top: 0.07rem;
+		font-size: 16px;
+		background-color: #fff;
+		height: 0.7rem;
+		line-height: 0.7rem;
+	}
+	.my-vip .more-detail{
+		position: absolute;
+		right: 0.15rem;
 	}
 	
+	/*字体图标*/
 	@font-face {
 		font-family: "iconfont";
 		src: url('../lib/font_tubiao/iconfont.eot?t=1501831187941');
@@ -78,20 +173,24 @@
 	
 	.icon-yingchengqia:before {
 		content: "\e75f";
+		color: #04BE02;
 	}
 	
 	.icon-dianyingpiao:before {
 		content: "\e61f";
+		color: #fc378c;
 	}
 	
 	.icon-youhuiquan:before {
 		content: "\e60b";
+		color: #FFBE00;
 	}
 	.icon-lingdang:before {
 		content: "\e631";
 	}
 	.icon-menpiao_zhanlanyanchu:before {
 		content: "\e680";
+		color: #007AFF;
 	}
 	
 </style>
