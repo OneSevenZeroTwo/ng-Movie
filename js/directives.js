@@ -35,7 +35,91 @@
             }
         }
     }]);
-
+    directives.directive('xswiper', ['$http', function($http) {
+        return {
+            templateUrl: 'directive/xswiper.html',
+            link: function(scope, ele, attr) {
+              
+          		scope.urls = ["./img/Frontpage/lunbo1.jpg","./img/Frontpage/lunbo2.jpg","./img/Frontpage/lunbo3.jpg","./img/Frontpage/lunbo4.jpg","./img/Frontpage/lunbo5.jpg","./img/Frontpage/lunbo6.jpg","./img/Frontpage/lunbo7.jpg"];
+              var swiper = new Swiper('.swiper-container', {
+					pagination: '.swiper-pagination',
+					paginationClickable: true,
+					observer: true, //修改swiper自己或子元素时，自动初始化swiper
+					observeParents: true,//修改swiper的父元素时，自动初始化swiper
+					autoplay: 3000,
+					autoplayDisableOnInteraction: false
+				});
+            }
+        }
+    }]);
+    directives.directive('xlist', ['$http', function($http) {
+        return {
+            templateUrl: 'directive/xlist.html',
+            link: function(scope, ele, attr) {
+                scope.news = [];
+                scope.channel = attr.channel;
+                scope.tableNum = 1;
+                scope.page = 1;
+                scope.pagesize = 10;
+                scope.noMore = false;
+                scope.showMore = true;
+                scope.changeShow = function() {
+                    scope.showNews();
+                }
+                scope.showNews = function() {
+                    scope.isShow++;
+                    scope.showMore = false;
+                    $http({
+                        method: 'GET',
+                        url: 'http://localhost:6789/',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+                        },
+                        params: {
+                            tableNum: scope.tableNum,
+                            page: scope.page++,
+                            pagesize: scope.pagesize
+                        },
+                        transformRequest: function(obj) {
+                            var str = [];
+                            for (var p in obj) {
+                                str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
+                            }
+                            return str.join("&");
+                        }
+                    }).then(function(data) {
+                        console.log(data.data.data);
+                        scope.news = scope.news.concat(data.data.data);
+                        scope.isShow--;
+                        scope.showMore = true;
+                        if (scope.news.length >= 50) {
+                            scope.noMore = true;
+                            scope.isShow=0;
+                            scope.showMore = false;
+                        }
+                    }, function(err) {
+                        console.log(err);
+                    });
+                }
+                scope.showNews();
+            }
+        }
+    }]);
+		directives.directive('xhlist', ["$http",function($http) {
+        return {
+            templateUrl: 'directive/xhlist.html',
+            link:function(scope,ele,attr){
+            	var baseUrl = "https://bird.ioliu.cn/v1?url=http://m.maoyan.com";
+            	console.log(444);
+            	$http({
+            		method:"GET",
+            		url:baseUrl+"/movie/list.json?type=hot&offset=0&limit=1000"
+            	}).then(function(data){
+            		console.log(data);
+            	})
+            }
+        }
+    }]);
     // xfooter 底部组件===================================
     directives.directive('xfooter', ['$location', function($location) {
         return {
@@ -165,35 +249,15 @@
             }
         }
     }]);
-
-    // xwillinbanner xwillin的栏目组件====================================
-    /*directives.directive('xwillinbanner', ['$http', function($http) {
-        return {
-            templateUrl: 'directive/xwillinbanner.html',
-            link: function(scope, ele, attr) {
-                $http({
-                    method: 'GET',
-                    url: 'data/willin_banner.json',
-                }).then(function(data) {
-                    console.log(data.data.data);
-                    scope.banner = data.data.data;
-                }, function(err) {
-                    console.log(err);
-                });
-                var swiper = new Swiper('.swiper-container', {
-                    pagination: '.swiper-pagination',
-                    paginationClickable: true,
-                    observer: true, //修改swiper自己或子元素时，自动初始化swiper
-                    observeParents: true //修改swiper的父元素时，自动初始化swiper
-                });
-            }
-        }
-    }]);*/
-
     directives.directive('xloading', [function() {
         return {
             templateUrl: 'directive/xloading.html'
         }
     }]);
-
+    //我的页面
+	directives.directive('xmine', [function() {
+        return {
+            templateUrl: 'directive/xmine.html'
+        }
+    }]);
 })();
